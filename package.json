@@ -1,0 +1,24 @@
+{
+  "name": "typing-speed-test-dynamic",
+  "version": "1.0.0",
+  "description": "![Design preview for the Typing Speed Test coding challenge](./preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass assets/scss/main.scss assets/css/main.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmuneeb1000/typing-speed-test-dynamic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmuneeb1000/typing-speed-test-dynamic/issues"
+  },
+  "homepage": "https://github.com/mmuneeb1000/typing-speed-test-dynamic#readme",
+  "dependencies": {
+    "sass": "^1.101.0"
+  }
+}
