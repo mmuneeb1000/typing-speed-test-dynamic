@@ -36,6 +36,11 @@ button {
   color: hsl(210, 100%, 65%);
   border: 1px solid hsl(210, 100%, 65%);
 }
+.toggle-panel button:active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
 
 .start-btn {
   background-color: hsl(214, 100%, 55%);
@@ -79,6 +84,60 @@ button {
   gap: 0.5rem;
 }
 
+.typing-area {
+  margin-top: 1.5rem;
+}
+
+.reference-text {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: hsl(0, 0%, 7%);
+  border-radius: 8px;
+  min-height: 120px;
+  cursor: text;
+}
+.reference-text span {
+  transition: all 0.05s ease;
+}
+.reference-text span.correct {
+  color: hsl(140, 63%, 57%);
+  background: rgba(16, 185, 129, 0.1);
+}
+.reference-text span.incorrect {
+  color: hsl(354, 63%, 57%);
+  background: rgba(239, 68, 68, 0.1);
+  text-decoration: underline;
+}
+.reference-text span.current {
+  background: hsl(49, 85%, 70%);
+  color: #000;
+  border-radius: 2px;
+}
+
+/*.user-input {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}*/
+.result-page {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: hsl(0, 0%, 7%);
+  border-radius: 12px;
+  text-align: center;
+}
+.result-page span {
+  display: inline-block;
+  margin: 0.5rem 1rem;
+}
+
 main {
   max-width: 62.5rem;
   width: 100%;
@@ -100,18 +159,12 @@ main {
 }
 
 .start-test {
-  display: block;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   color: hsl(0, 0%, 100%);
   font-weight: 600;
-}
-
-.result-page {
-  display: none;
-}
-
-.results-btn {
-  display: none;
 }
 
 header {

@@ -19,3 +19,46 @@
   display: flex;
   gap: u.rem(8);
 }
+
+.typing-area {
+  margin-top: 1.5rem;
+}
+
+.reference-text {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: u.$grey-900;
+  border-radius: 8px;
+  min-height: 120px;
+  cursor: text;
+
+  span {
+    transition: all 0.05s ease;
+  }
+  span.correct {
+    color: u.$green-500;
+    background: rgba(16, 185, 129, 0.1);
+  }
+  span.incorrect {
+    color: u.$red-500;
+    background: rgba(239, 68, 68, 0.1);
+    text-decoration: underline;
+  }
+  span.current {
+    background: u.$yellow-400;
+    color: #000;
+    border-radius: 2px;
+  }
+}
+
+/*.user-input {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}*/

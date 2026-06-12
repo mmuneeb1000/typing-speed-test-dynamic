@@ -1,0 +1,14 @@
+@use "../utils/" as u;
+
+.result-page {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: u.$grey-900;
+  border-radius: 12px;
+  text-align: center;
+  span {
+    display: inline-block;
+    margin: 0.5rem 1rem;
+  }
+}
