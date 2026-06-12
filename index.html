@@ -15,33 +15,45 @@
     <title>Typing Speed Test - Frontend Mentor</title>
   </head>
   <body>
-    Personal best:
-    <!-- PB -->
-    WPM WPM:
-    <!-- WPM -->
-    Accuracy:
-    <!-- Accuracy -->
-    Time:
-    <!-- Time -->
-
-    Difficulty: Easy Medium Hard Mode: Timed (60s) Passage
-
-    <!-- Passage -->
-
-    Start Typing Test Or click the text and start typing
-
-    <!-- Test Complete Start -->
-
-    Test Complete! Solid run. Keep pushing to beat your high score. WPM:
-    <!-- WPM -->
-    Accuracy:
-    <!-- Accuracy -->
-    Characters:
-    <!-- Correct/Incorrect -->
-
-    Go Again
-
-    <!-- Test Complete End -->
+    <header>
+      <img src="assets/images/logo-large.svg" />
+      <div>
+        <img src="assets/images/icon-personal-best.svg" />
+        <span class="personal-best">Personal Best:</span>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div>
+          <span class="words-per-minute">WPM:</span>
+          <span class="accuracy">Personal Best:</span>
+          <span class="time">Personal Best:</span>
+        </div>
+        <div>
+          <span>Difficulty:</span>
+          <button>Easy</button>
+          <button>Medium</button>
+          <button>Hard</button>
+          <span>Mode:</span>
+          <button>Timed(60s)</button>
+          <button>Passage</button>
+        </div>
+      </section>
+      <section>
+        <button>Start Typing Test</button>
+        <p>Or click the text and start typing</p>
+      </section>
+      <button class="restart-btn">Restart Test</button>
+      <section class="result-page">
+        <img src="assets/images/icon-completed.svg" />
+        <h2>Test Completed</h2>
+        <p>Solid run. Keep pushing to beat your high score</p>
+        <span>WPM:</span>
+        <span>Accuracy:</span>
+        <span>Characters:</span>
+        <button>Go Again</button>
+      </section>
+    </main>
 
     <footer class="attribution">
       Challenge by
