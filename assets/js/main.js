@@ -229,7 +229,10 @@ function finishTest() {
     resultSpans[2].textContent = `Characters: ${charsTyped}`;
   }
 
-  resultPage.style.display = "block";
+  passageContainer.style.display = "none";
+  typingArea.style.display = "none";
+  restartBtn.style.display = "none";
+  resultPage.style.display = "flex";
 }
 
 // Start timer for timed mode
@@ -299,7 +302,8 @@ function startTest() {
   document.querySelector(".start-test").style.display = "none";
   typingArea.style.display = "block";
   resultPage.style.display = "none";
-
+  restartBtn.style.display = "flex";
+  userInput.focus();
   renderReferenceText();
   updateStats();
 }
@@ -372,7 +376,6 @@ function setMode(mode) {
   }
 }
 
-// Initialize the application
 async function init() {
   loadPersonalBest();
 
@@ -386,6 +389,16 @@ async function init() {
     startTest();
   });
   userInput.addEventListener("input", handleUserInput);
+  referenceTextDiv.addEventListener("click", () => {
+    if (testActive && !testCompleted) {
+      userInput.focus();
+    }
+  });
+  passageContainer.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON" && testActive && !testCompleted) {
+      userInput.focus();
+    }
+  });
 
   easyBtn.addEventListener("click", () => setDifficulty("easy"));
   mediumBtn.addEventListener("click", () => setDifficulty("medium"));
@@ -397,5 +410,4 @@ async function init() {
   easyBtn.classList.add("active");
   timedBtn.classList.add("active");
 }
-
 init();

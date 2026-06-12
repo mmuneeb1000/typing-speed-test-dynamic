@@ -30,11 +30,17 @@
 
 .restart-btn {
   display: none;
-  background-color: transparent;
-  color: u.$grey-400;
+  background-color: u.$grey-800;
+  color: u.$white;
   font-size: u.rem(16);
+  font-weight: u.$font-semibold;
+  gap: u.rem(10);
   border: 1px solid u.$grey-500;
-  padding: u.rem(10) u.rem(16);
+  padding: u.rem(10) u.rem(12);
   border-radius: u.rem(8);
-  margin: u.rem(8);
+  margin: u.rem(8) auto;
+  span {
+    width: 16px;
+    height: 16px;
+  }
 }

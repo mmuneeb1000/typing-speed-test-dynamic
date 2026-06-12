@@ -1,14 +1,24 @@
 @use "../utils/" as u;
 
 .result-page {
-  display: none;
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
   padding: 1.5rem;
+  align-items: center;
   background: u.$grey-900;
   border-radius: 12px;
-  text-align: center;
-  span {
-    display: inline-block;
-    margin: 0.5rem 1rem;
+  img {
+    width: 60px;
   }
+  span {
+    display: flex;
+    margin: 0.5rem 1rem;
+    border: 1px solid u.$grey-500;
+    padding: u.rem(8);
+  }
+}
+
+.result-cards {
+  display: flex;
 }
