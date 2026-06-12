@@ -1,0 +1,23 @@
+@use "../utils/" as u;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Sora", "Inter", sans-serif;
+  background: u.$grey-900;
+  color: u.$grey-400;
+  font-size: u.rem(16);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+button {
+  font-family: inherit;
+}

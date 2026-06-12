@@ -1,0 +1,12 @@
+@use "../utils/" as u;
+
+header {
+  display: flex;
+  width: u.rem(1000);
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: u.rem(32);
+  background: u.$grey-900;
+  padding: u.rem(16) u.rem(32);
+}

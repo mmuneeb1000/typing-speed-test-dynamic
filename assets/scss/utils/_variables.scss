@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora/Sora-VariableFont_wght.ttf") format("truetype");
+}
+
+$grey-900: hsl(0, 0%, 7%);
+$grey-800: hsl(0, 0%, 15%);
+$grey-500: hsl(240, 3%, 46%);
+$grey-400: hsl(240, 1%, 59%);
+$white: hsl(0, 0%, 100%);
+$blue-600: hsl(214, 100%, 55%);
+$blue-400: hsl(210, 100%, 65%);
+$red-500: hsl(354, 63%, 57%);
+$green-500: hsl(140, 63%, 57%);
+$yellow-400: hsl(49, 85%, 70%);
+
+$font-regular: 400;
+$font-semibold: 600;
+$font-bold: 700;

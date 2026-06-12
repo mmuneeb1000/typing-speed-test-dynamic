@@ -1,0 +1,21 @@
+@use "../utils" as u;
+
+.display-card {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.stats-card {
+  display: flex;
+  gap: u.rem(20);
+  span {
+    color: u.$white;
+    font-weight: u.$font-semibold;
+  }
+}
+
+.toggle-panel {
+  display: flex;
+  gap: u.rem(8);
+}

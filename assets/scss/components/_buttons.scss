@@ -1,0 +1,35 @@
+@use "../utils" as u;
+
+.toggle-panel button {
+  background: transparent;
+  color: u.$grey-500;
+  border: 1px solid u.$grey-500;
+  padding: u.rem(2) u.rem(4);
+  border-radius: u.rem(8);
+  &:hover {
+    color: u.$blue-400;
+    border: 1px solid u.$blue-400;
+  }
+}
+
+.start-btn {
+  background-color: u.$blue-600;
+  color: u.$white;
+  font-size: u.rem(16);
+  font-weight: u.$font-semibold;
+  border: none;
+  padding: u.rem(10) u.rem(16);
+  border-radius: u.rem(8);
+  margin: u.rem(8);
+}
+
+.restart-btn {
+  display: none;
+  background-color: transparent;
+  color: u.$grey-400;
+  font-size: u.rem(16);
+  border: 1px solid u.$grey-500;
+  padding: u.rem(10) u.rem(16);
+  border-radius: u.rem(8);
+  margin: u.rem(8);
+}

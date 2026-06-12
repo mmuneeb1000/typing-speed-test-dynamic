@@ -23,25 +23,27 @@
       </div>
     </header>
     <main>
-      <section>
-        <div>
-          <span class="words-per-minute">WPM:</span>
-          <span class="accuracy">Personal Best:</span>
-          <span class="time">Personal Best:</span>
+      <section class="display-card">
+        <div class="stats-card">
+          <div>WPM: <span class="words-per-minute">0</span></div>
+          <div>Accuracy: <span class="accuracy">100%</span></div>
+          <div>Time: <span class="time">0.60</span></div>
         </div>
-        <div>
-          <span>Difficulty:</span>
-          <button>Easy</button>
-          <button>Medium</button>
-          <button>Hard</button>
-          <span>Mode:</span>
-          <button>Timed(60s)</button>
-          <button>Passage</button>
+        <div class="toggle-panel">
+          <span>Difficulty: </span>
+          <button class="toggle-easy">Easy</button>
+          <button class="toggle-medium">Medium</button>
+          <button class="toggle-hard">Hard</button>
+          <span>Mode: </span>
+          <button class="toggle-timed">Timed(60s)</button>
+          <button class="toggle-passage">Passage</button>
         </div>
       </section>
-      <section>
-        <button>Start Typing Test</button>
-        <p>Or click the text and start typing</p>
+      <section class="passage-container">
+        <div class="start-test">
+          <button class="start-btn">Start Typing Test</button>
+          <p>Or click the text and start typing</p>
+        </div>
       </section>
       <button class="restart-btn">Restart Test</button>
       <section class="result-page">

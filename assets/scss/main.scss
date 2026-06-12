@@ -1,6 +1,4 @@
-@use "layout/container";
-@use "base/reset";
-@use "base/typography";
+@use "base";
+@use "components";
+@use "layout";
 @use "utils";
-@use "components/formstyling";
-@use "components/buttons";
