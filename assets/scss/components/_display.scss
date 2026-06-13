@@ -75,3 +75,14 @@
   border: 1px solid u.$blue-400 !important;
   color: u.$blue-400 !important;
 }
+
+@media (max-width: 768px) {
+  .display-card {
+    display: block;
+    width: 100%;
+    padding: u.rem(12);
+  }
+  .stats-card {
+    margin-bottom: u.rem(20);
+  }
+}

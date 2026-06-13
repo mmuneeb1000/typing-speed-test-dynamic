@@ -10,3 +10,9 @@ header {
   background: u.$grey-900;
   padding: u.rem(24) u.rem(32);
 }
+@media (max-width: 768px) {
+  header {
+    width: 100%;
+    padding: u.rem(12);
+  }
+}

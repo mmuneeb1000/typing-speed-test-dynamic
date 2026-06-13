@@ -30,3 +30,10 @@ main {
   color: u.$white;
   font-weight: u.$font-semibold;
 }
+
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+    padding: u.rem(12);
+  }
+}

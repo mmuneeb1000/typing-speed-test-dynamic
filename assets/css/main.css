@@ -170,6 +170,16 @@ button {
   color: hsl(210, 100%, 65%) !important;
 }
 
+@media (max-width: 768px) {
+  .display-card {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+  }
+  .stats-card {
+    margin-bottom: 1.25rem;
+  }
+}
 .result-page {
   display: none;
   flex-direction: column;
@@ -237,6 +247,12 @@ main {
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
 header {
   display: flex;
   width: 62.5rem;
@@ -248,6 +264,12 @@ header {
   padding: 1.5rem 2rem;
 }
 
+@media (max-width: 768px) {
+  header {
+    width: 100%;
+    padding: 0.75rem;
+  }
+}
 .attribution {
   font-size: 0.75rem;
   text-align: center;
