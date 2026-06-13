@@ -177,7 +177,14 @@ button {
     padding: 0.75rem;
   }
   .stats-card {
+    display: block;
     margin-bottom: 1.25rem;
+  }
+  .toggle-panel {
+    display: block;
+  }
+  .reference-text {
+    font-size: 1.25rem;
   }
 }
 .result-page {
@@ -215,6 +222,18 @@ button {
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  .result-page {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-image: none;
+  }
+  .result-cards {
+    display: block;
+  }
+}
 main {
   max-width: 62.5rem;
   width: 100%;

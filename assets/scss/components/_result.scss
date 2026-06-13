@@ -38,3 +38,16 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .result-page {
+    width: 100%;
+    padding: u.rem(12);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-image: none;
+  }
+  .result-cards {
+    display: block;
+  }
+}

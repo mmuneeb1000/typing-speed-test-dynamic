@@ -83,6 +83,13 @@
     padding: u.rem(12);
   }
   .stats-card {
+    display: block;
     margin-bottom: u.rem(20);
+  }
+  .toggle-panel {
+    display: block;
+  }
+  .reference-text {
+    font-size: u.rem(20);
   }
 }
