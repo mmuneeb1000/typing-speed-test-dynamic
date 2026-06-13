@@ -1,6 +1,3 @@
-// assets/js/main.js
-
-// DOM Elements
 const wpmElement = document.querySelector(".words-per-minute");
 const accuracyElement = document.querySelector(".accuracy");
 const timeElement = document.querySelector(".time");
@@ -11,17 +8,15 @@ const resultPage = document.querySelector(".result-page");
 const passageContainer = document.querySelector(".passage-container");
 const personalBestSpan = document.querySelector(".personal-best");
 
-// Toggle buttons
 const easyBtn = document.querySelector(".toggle-easy");
 const mediumBtn = document.querySelector(".toggle-medium");
 const hardBtn = document.querySelector(".toggle-hard");
 const timedBtn = document.querySelector(".toggle-timed");
 const passageBtn = document.querySelector(".toggle-passage");
 
-// State variables
 let passageData = null;
-let currentDifficulty = "easy";
-let currentMode = "timed"; // 'timed' or 'passage'
+let currentDifficulty = "hard";
+let currentMode = "timed";
 let currentPassage = "";
 let currentInput = "";
 let testActive = false;
@@ -34,10 +29,7 @@ let currentCharIndex = 0;
 let totalCharacters = 0;
 let correctCharacters = 0;
 
-// Create typing elements
-const typingArea = document.createElement("div");
-typingArea.className = "typing-area";
-typingArea.style.display = "none";
+const typingArea = document.querySelector(".typing-area");
 
 const referenceTextDiv = document.createElement("div");
 referenceTextDiv.className = "reference-text";
@@ -50,9 +42,7 @@ userInput.rows = 4;
 
 typingArea.appendChild(referenceTextDiv);
 typingArea.appendChild(userInput);
-passageContainer.appendChild(typingArea);
 
-// Load personal best from localStorage
 function loadPersonalBest() {
   const saved = localStorage.getItem("typingPersonalBest");
   if (saved && !isNaN(parseInt(saved))) {
@@ -63,7 +53,6 @@ function loadPersonalBest() {
   }
 }
 
-// Save personal best
 function savePersonalBest(wpm) {
   if (wpm > personalBest) {
     personalBest = wpm;
@@ -72,7 +61,6 @@ function savePersonalBest(wpm) {
   }
 }
 
-// Fetch passage data from JSON
 async function loadPassageData() {
   try {
     const response = await fetch("./data.json");
@@ -102,7 +90,6 @@ function selectRandomPassage() {
   renderReferenceText();
 }
 
-// Render reference text with proper formatting
 function renderReferenceText() {
   let html = "";
   for (let i = 0; i < currentPassage.length; i++) {
@@ -124,7 +111,6 @@ function renderReferenceText() {
     html += `<span class="${className}">${escapeHtml(char)}</span>`;
   }
 
-  // Handle extra characters typed beyond passage length
   if (currentInput.length > currentPassage.length) {
     for (let i = currentPassage.length; i < currentInput.length; i++) {
       html += `<span class="incorrect">${escapeHtml(currentInput[i])}</span>`;
@@ -134,7 +120,6 @@ function renderReferenceText() {
   referenceTextDiv.innerHTML = html;
 }
 
-// Escape HTML special characters
 function escapeHtml(str) {
   return str.replace(/[&<>]/g, function (m) {
     if (m === "&") return "&amp;";
@@ -160,7 +145,6 @@ function calculateAccuracy() {
   return Math.floor((correct / currentInput.length) * 100);
 }
 
-// Calculate WPM
 function calculateWPM() {
   if (!startTime) return 0;
 
@@ -169,7 +153,6 @@ function calculateWPM() {
 
   if (elapsedMinutes === 0) return 0;
 
-  // Count correct characters
   let correct = 0;
   const minLength = Math.min(currentInput.length, currentPassage.length);
   for (let i = 0; i < minLength; i++) {
@@ -178,13 +161,11 @@ function calculateWPM() {
     }
   }
 
-  // Standard: 5 characters = 1 word
   const wordsTyped = correct / 5;
   const wpm = Math.floor(wordsTyped / elapsedMinutes);
   return wpm;
 }
 
-// Update stats display
 function updateStats() {
   const wpm = calculateWPM();
   const accuracy = calculateAccuracy();
@@ -200,7 +181,6 @@ function updateStats() {
   }
 }
 
-// Finish test
 function finishTest() {
   if (testCompleted) return;
 
@@ -218,10 +198,8 @@ function finishTest() {
   const finalAccuracy = calculateAccuracy();
   const charsTyped = currentInput.length;
 
-  // Save personal best
   savePersonalBest(finalWPM);
 
-  // Update result page
   const resultSpans = resultPage.querySelectorAll("span");
   if (resultSpans.length >= 3) {
     resultSpans[0].textContent = `WPM: ${finalWPM}`;
@@ -235,7 +213,6 @@ function finishTest() {
   resultPage.style.display = "flex";
 }
 
-// Start timer for timed mode
 function startTimedMode() {
   timer = setInterval(() => {
     if (!testActive) return;
@@ -251,7 +228,6 @@ function startTimedMode() {
   }, 1000);
 }
 
-// Handle user input
 function handleUserInput(e) {
   if (!testActive || testCompleted) return;
 
@@ -259,7 +235,6 @@ function handleUserInput(e) {
   renderReferenceText();
   updateStats();
 
-  // Check for passage completion in passage mode
   if (
     currentMode === "passage" &&
     currentInput.length >= currentPassage.length
@@ -277,7 +252,6 @@ function handleUserInput(e) {
   }
 }
 
-// Start the typing test
 function startTest() {
   if (testActive) return;
 
@@ -298,25 +272,22 @@ function startTest() {
     timeElement.textContent = "0.0";
   }
 
-  // Hide start prompt, show typing area
   document.querySelector(".start-test").style.display = "none";
   typingArea.style.display = "block";
   resultPage.style.display = "none";
   restartBtn.style.display = "flex";
+  typingArea.style.filter = "none";
   userInput.focus();
   renderReferenceText();
   updateStats();
 }
 
-// Restart test
 function restartTest() {
-  // Stop timer
   if (timer) {
     clearInterval(timer);
     timer = null;
   }
 
-  // Reset state
   testActive = false;
   testCompleted = false;
   currentInput = "";
@@ -331,25 +302,20 @@ function restartTest() {
     timeElement.textContent = "0.0";
   }
 
-  // Select new random passage
   selectRandomPassage();
 
-  // Reset UI
   document.querySelector(".start-test").style.display = "flex";
-  typingArea.style.display = "none";
   resultPage.style.display = "none";
-
+  typingArea.style.filter = "blur(4px)";
   wpmElement.textContent = "0";
   accuracyElement.textContent = "100%";
 }
 
-// Change difficulty
 function setDifficulty(difficulty) {
   if (testActive) return;
   currentDifficulty = difficulty;
   selectRandomPassage();
 
-  // Update active button styling
   [easyBtn, mediumBtn, hardBtn].forEach((btn) => {
     btn.classList.remove("active");
   });
@@ -358,12 +324,10 @@ function setDifficulty(difficulty) {
   if (difficulty === "hard") hardBtn.classList.add("active");
 }
 
-// Change mode
 function setMode(mode) {
   if (testActive) return;
   currentMode = mode;
 
-  // Update active button styling
   [timedBtn, passageBtn].forEach((btn) => {
     btn.classList.remove("active");
   });
@@ -378,7 +342,7 @@ function setMode(mode) {
 
 async function init() {
   loadPersonalBest();
-
+  passageContainer.style.display = "flex";
   const loaded = await loadPassageData();
   if (!loaded) return;
 
@@ -406,8 +370,7 @@ async function init() {
   timedBtn.addEventListener("click", () => setMode("timed"));
   passageBtn.addEventListener("click", () => setMode("passage"));
 
-  // Set initial active states
-  easyBtn.classList.add("active");
+  hardBtn.classList.add("active");
   timedBtn.classList.add("active");
 }
 init();

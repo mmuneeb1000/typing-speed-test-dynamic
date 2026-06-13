@@ -22,6 +22,7 @@
 
 .typing-area {
   margin-top: 1.5rem;
+  filter: blur(u.rem(4));
 }
 
 .reference-text {
@@ -29,7 +30,6 @@
   line-height: 1.6;
   margin-bottom: 1rem;
   padding: 1rem;
-  background: u.$grey-900;
   border-radius: 8px;
   min-height: 120px;
   cursor: text;
@@ -61,4 +61,9 @@
   height: 1px;
   opacity: 0;
   pointer-events: none;
+}
+
+.active {
+  border: 1px solid u.$blue-400 !important;
+  color: u.$blue-400 !important;
 }

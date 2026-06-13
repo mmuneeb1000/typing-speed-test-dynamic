@@ -11,9 +11,12 @@
     border: 1px solid u.$blue-400;
   }
   &:active {
-    background: #3b82f6;
-    color: white;
-    border-color: #3b82f6;
+    color: u.$blue-400;
+    border: 1px solid u.$blue-400;
+  }
+  &:focus {
+    color: u.$blue-400;
+    border: 1px solid u.$blue-400;
   }
 }
 
@@ -40,7 +43,29 @@
   border-radius: u.rem(8);
   margin: u.rem(8) auto;
   span {
-    width: 16px;
-    height: 16px;
+    width: u.rem(16);
+    height: u.rem(16);
   }
+}
+
+.result-btn {
+  display: flex;
+  background-color: u.$white;
+  color: u.$grey-900;
+  font-size: u.rem(16);
+  font-weight: u.$font-semibold;
+  gap: u.rem(10);
+  border: 1px solid u.$grey-500;
+  padding: u.rem(12) u.rem(16);
+  border-radius: u.rem(8);
+  margin: u.rem(8) auto;
+  span {
+    display: inline-block;
+    width: u.rem(16);
+    height: u.rem(16);
+  }
+}
+
+.again-icon {
+  filter: invert(1);
 }

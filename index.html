@@ -41,24 +41,30 @@
       </section>
       <section class="passage-container">
         <div class="start-test">
-          <div class="typing-area"></div>
           <button class="start-btn">Start Typing Test</button>
           <p>Or click the text and start typing</p>
         </div>
+        <div class="typing-area"></div>
       </section>
       <section class="result-page">
         <img src="assets/images/icon-completed.svg" />
         <h2>Test Completed</h2>
         <p>Solid run. Keep pushing to beat your high score</p>
         <div class="result-cards">
-          <span>WPM:</span>
-          <span>Accuracy:</span>
-          <span>Characters:</span>
+          <div>WPM: <span class="words-per-minute">0</span></div>
+          <div>Accuracy: <span class="accuracy">100%</span></div>
+          <div>Time: <span class="time">0.60</span></div>
         </div>
-        <button>Go Again</button>
+        <button class="result-btn">
+          Go Again<span
+            ><img class="again-icon" src="/assets/images/icon-restart.svg"
+          /></span>
+        </button>
       </section>
       <button class="restart-btn">
-        Restart Test<span><img src="/assets/images/icon-restart.svg" /></span>
+        Restart Test<span
+          ><img class="restart-icon" src="/assets/images/icon-restart.svg"
+        /></span>
       </button>
     </main>
 
