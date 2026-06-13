@@ -5,12 +5,22 @@
   width: 100%;
   justify-content: space-around;
 }
-
+.words-per-minute {
+  color: u.$white;
+}
+.correct {
+  color: u.$green-500;
+}
+.accuracy {
+  color: u.$red-500;
+}
+.time {
+  color: u.$yellow-400;
+}
 .stats-card {
   display: flex;
   gap: u.rem(20);
   span {
-    color: u.$white;
     font-weight: u.$font-semibold;
   }
 }
@@ -21,17 +31,15 @@
 }
 
 .typing-area {
-  margin-top: 1.5rem;
   filter: blur(u.rem(4));
 }
 
 .reference-text {
-  font-size: 1.8rem;
+  font-size: u.rem(30);
   line-height: 1.6;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  min-height: 120px;
+  margin-bottom: u.rem(32);
+  padding: u.rem(24) 0;
+  border-radius: u.rem(8);
   cursor: text;
 
   span {

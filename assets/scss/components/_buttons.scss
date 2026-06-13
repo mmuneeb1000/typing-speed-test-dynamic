@@ -14,10 +14,6 @@
     color: u.$blue-400;
     border: 1px solid u.$blue-400;
   }
-  &:focus {
-    color: u.$blue-400;
-    border: 1px solid u.$blue-400;
-  }
 }
 
 .start-btn {
@@ -41,7 +37,7 @@
   border: 1px solid u.$grey-500;
   padding: u.rem(10) u.rem(12);
   border-radius: u.rem(8);
-  margin: u.rem(8) auto;
+  margin: u.rem(16) auto;
   span {
     width: u.rem(16);
     height: u.rem(16);
@@ -56,8 +52,8 @@
   font-weight: u.$font-semibold;
   gap: u.rem(10);
   border: 1px solid u.$grey-500;
-  padding: u.rem(12) u.rem(16);
-  border-radius: u.rem(8);
+  padding: u.rem(8) u.rem(10);
+  border-radius: u.rem(12);
   margin: u.rem(8) auto;
   span {
     display: inline-block;

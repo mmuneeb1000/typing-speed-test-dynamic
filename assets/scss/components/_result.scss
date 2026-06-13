@@ -1,31 +1,40 @@
 @use "../utils/" as u;
 
 .result-page {
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 60vh;
   justify-content: center;
-  margin-top: 2rem;
-  padding: 1.5rem;
+  padding: u.rem(16);
   gap: u.rem(24);
   align-items: center;
-  background: u.$grey-900;
   border-radius: 12px;
+  background-image:
+    url("/assets/images/pattern-star-2.svg"),
+    url("/assets/images/pattern-star-1.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position:
+    top 100px left 20px,
+    bottom 100px right 40px;
+  background-size: 20px, 40px;
 }
 
 .result-cards {
   display: flex;
   div {
     display: flex;
-    width: u.rem(150);
+    width: u.rem(130);
     flex-direction: column;
-    gap: u.rem(12);
-    justify-content: flex-end;
+    gap: u.rem(4);
+    align-items: flex-start;
+    justify-content: center;
     margin: 0.5rem 1rem;
     border: 1px solid u.$grey-500;
-    padding: u.rem(24);
+    padding: u.rem(12);
+    border-radius: u.rem(10);
     span {
-      font-size: u.rem(24);
+      font-size: u.rem(22);
+      font-weight: u.$font-semibold;
     }
   }
 }

@@ -17,8 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem 1.5rem;
+  justify-content: flex-start;
 }
 
 button {
@@ -37,10 +36,6 @@ button {
   border: 1px solid hsl(210, 100%, 65%);
 }
 .toggle-panel button:active {
-  color: hsl(210, 100%, 65%);
-  border: 1px solid hsl(210, 100%, 65%);
-}
-.toggle-panel button:focus {
   color: hsl(210, 100%, 65%);
   border: 1px solid hsl(210, 100%, 65%);
 }
@@ -66,7 +61,7 @@ button {
   border: 1px solid hsl(240, 3%, 46%);
   padding: 0.625rem 0.75rem;
   border-radius: 0.5rem;
-  margin: 0.5rem auto;
+  margin: 1rem auto;
 }
 .restart-btn span {
   width: 1rem;
@@ -81,8 +76,8 @@ button {
   font-weight: 600;
   gap: 0.625rem;
   border: 1px solid hsl(240, 3%, 46%);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.75rem;
   margin: 0.5rem auto;
 }
 .result-btn span {
@@ -101,12 +96,27 @@ button {
   justify-content: space-around;
 }
 
+.words-per-minute {
+  color: hsl(0, 0%, 100%);
+}
+
+.correct {
+  color: hsl(140, 63%, 57%);
+}
+
+.accuracy {
+  color: hsl(354, 63%, 57%);
+}
+
+.time {
+  color: hsl(49, 85%, 70%);
+}
+
 .stats-card {
   display: flex;
   gap: 1.25rem;
 }
 .stats-card span {
-  color: hsl(0, 0%, 100%);
   font-weight: 600;
 }
 
@@ -116,17 +126,15 @@ button {
 }
 
 .typing-area {
-  margin-top: 1.5rem;
   filter: blur(0.25rem);
 }
 
 .reference-text {
-  font-size: 1.8rem;
+  font-size: 1.875rem;
   line-height: 1.6;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  min-height: 120px;
+  margin-bottom: 2rem;
+  padding: 1.5rem 0;
+  border-radius: 0.5rem;
   cursor: text;
 }
 .reference-text span {
@@ -163,16 +171,18 @@ button {
 }
 
 .result-page {
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 60vh;
   justify-content: center;
-  margin-top: 2rem;
-  padding: 1.5rem;
+  padding: 1rem;
   gap: 1.5rem;
   align-items: center;
-  background: hsl(0, 0%, 7%);
   border-radius: 12px;
+  background-image: url("/assets/images/pattern-star-2.svg"), url("/assets/images/pattern-star-1.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top 100px left 20px, bottom 100px right 40px;
+  background-size: 20px, 40px;
 }
 
 .result-cards {
@@ -180,16 +190,19 @@ button {
 }
 .result-cards div {
   display: flex;
-  width: 9.375rem;
+  width: 8.125rem;
   flex-direction: column;
-  gap: 0.75rem;
-  justify-content: flex-end;
+  gap: 0.25rem;
+  align-items: flex-start;
+  justify-content: center;
   margin: 0.5rem 1rem;
   border: 1px solid hsl(240, 3%, 46%);
-  padding: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 0.625rem;
 }
 .result-cards div span {
-  font-size: 1.5rem;
+  font-size: 1.375rem;
+  font-weight: 600;
 }
 
 main {
@@ -197,13 +210,11 @@ main {
   width: 100%;
   background: hsl(0, 0%, 7%);
   border-radius: 3rem;
-  padding: 2rem;
   transition: all 0.2s ease;
 }
 
 .passage-container {
   width: 100%;
-  height: 70vh;
   display: flex;
   margin: 12px 0;
   justify-content: center;
@@ -231,10 +242,10 @@ header {
   width: 62.5rem;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1.25rem;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
   background: hsl(0, 0%, 7%);
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .attribution {

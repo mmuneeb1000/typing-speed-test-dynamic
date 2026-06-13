@@ -3,11 +3,13 @@ const accuracyElement = document.querySelector(".accuracy");
 const timeElement = document.querySelector(".time");
 const startBtn = document.querySelector(".start-btn");
 const restartBtn = document.querySelector(".restart-btn");
-const goAgainBtn = document.querySelector(".result-page button");
+const goAgainBtn = document.querySelector(".result-btn");
 const resultPage = document.querySelector(".result-page");
 const passageContainer = document.querySelector(".passage-container");
 const personalBestSpan = document.querySelector(".personal-best");
 
+const typingArea = document.querySelector(".typing-area");
+const displayCard = document.querySelector(".display-card");
 const easyBtn = document.querySelector(".toggle-easy");
 const mediumBtn = document.querySelector(".toggle-medium");
 const hardBtn = document.querySelector(".toggle-hard");
@@ -23,13 +25,12 @@ let testActive = false;
 let testCompleted = false;
 let timer = null;
 let timeLeft = 60;
-let startTime = null;
+let startTime = 0;
 let personalBest = 0;
 let currentCharIndex = 0;
 let totalCharacters = 0;
 let correctCharacters = 0;
-
-const typingArea = document.querySelector(".typing-area");
+let incorrectCharacter = 0;
 
 const referenceTextDiv = document.createElement("div");
 referenceTextDiv.className = "reference-text";
@@ -129,7 +130,6 @@ function escapeHtml(str) {
   });
 }
 
-// Calculate accuracy
 function calculateAccuracy() {
   if (currentInput.length === 0) return 100;
 
@@ -174,7 +174,7 @@ function updateStats() {
   accuracyElement.textContent = `${accuracy}%`;
 
   if (currentMode === "timed") {
-    timeElement.textContent = timeLeft;
+    timeElement.textContent = `0.${timeLeft}`;
   } else {
     const elapsedSeconds = startTime ? (Date.now() - startTime) / 1000 : 0;
     timeElement.textContent = elapsedSeconds.toFixed(1);
@@ -197,19 +197,21 @@ function finishTest() {
   const finalWPM = calculateWPM();
   const finalAccuracy = calculateAccuracy();
   const charsTyped = currentInput.length;
+  const charsWrong = currentInput.length;
 
   savePersonalBest(finalWPM);
 
   const resultSpans = resultPage.querySelectorAll("span");
   if (resultSpans.length >= 3) {
-    resultSpans[0].textContent = `WPM: ${finalWPM}`;
-    resultSpans[1].textContent = `Accuracy: ${finalAccuracy}%`;
-    resultSpans[2].textContent = `Characters: ${charsTyped}`;
+    resultSpans[0].textContent = `${finalWPM}`;
+    resultSpans[1].textContent = `${finalAccuracy}%`;
+    resultSpans[2].textContent = `${charsTyped}/ ${charsWrong}`;
   }
 
   passageContainer.style.display = "none";
   typingArea.style.display = "none";
   restartBtn.style.display = "none";
+  displayCard.style.display = "none";
   resultPage.style.display = "flex";
 }
 
@@ -235,19 +237,16 @@ function handleUserInput(e) {
   renderReferenceText();
   updateStats();
 
-  if (
-    currentMode === "passage" &&
-    currentInput.length >= currentPassage.length
-  ) {
-    let isComplete = true;
-    for (let i = 0; i < currentPassage.length; i++) {
-      if (currentInput[i] !== currentPassage[i]) {
-        isComplete = false;
-        break;
-      }
-    }
+  if (currentMode === "passage") {
+    const isComplete =
+      currentInput.length >= currentPassage.length &&
+      currentInput.slice(0, currentPassage.length) === currentPassage;
+
     if (isComplete) {
+      if (timer) clearInterval(timer);
+      testCompleted = true;
       finishTest();
+      userInput.disabled = true;
     }
   }
 }
@@ -255,7 +254,6 @@ function handleUserInput(e) {
 function startTest() {
   if (testActive) return;
 
-  // Reset state
   testActive = true;
   testCompleted = false;
   currentInput = "";
@@ -267,17 +265,17 @@ function startTest() {
   if (currentMode === "timed") {
     timeLeft = 60;
     startTimedMode();
+    timeElement.textContent = `0.${timeLeft}`;
   } else {
     timeLeft = null;
     timeElement.textContent = "0.0";
   }
 
   document.querySelector(".start-test").style.display = "none";
-  typingArea.style.display = "block";
+  typingArea.style.display = "flex";
   resultPage.style.display = "none";
   restartBtn.style.display = "flex";
   typingArea.style.filter = "none";
-  userInput.focus();
   renderReferenceText();
   updateStats();
 }
@@ -297,7 +295,7 @@ function restartTest() {
 
   if (currentMode === "timed") {
     timeLeft = 60;
-    timeElement.textContent = "60";
+    timeElement.textContent = `0.${timeLeft}`;
   } else {
     timeElement.textContent = "0.0";
   }
@@ -343,6 +341,9 @@ function setMode(mode) {
 async function init() {
   loadPersonalBest();
   passageContainer.style.display = "flex";
+  wpmElement.textContent = calculateWPM();
+  accuracyElement.textContent = calculateAccuracy();
+  timeElement.textContent = `0.${timeLeft}`;
   const loaded = await loadPassageData();
   if (!loaded) return;
 
@@ -351,6 +352,8 @@ async function init() {
   goAgainBtn.addEventListener("click", () => {
     restartTest();
     startTest();
+    displayCard.style.display = "flex";
+    passageContainer.style.display = "flex";
   });
   userInput.addEventListener("input", handleUserInput);
   referenceTextDiv.addEventListener("click", () => {
