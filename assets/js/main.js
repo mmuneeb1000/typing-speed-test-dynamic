@@ -422,6 +422,7 @@ async function init() {
     startTest();
     displayCard.style.display = "flex";
     passageContainer.style.display = "flex";
+    userInput.focus();
   });
   userInput.addEventListener("input", handleUserInput);
   referenceTextDiv.addEventListener("click", () => {
