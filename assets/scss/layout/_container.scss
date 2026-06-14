@@ -35,5 +35,11 @@ main {
   main {
     width: 100%;
     padding: u.rem(12);
+    h2 {
+      font-size: u.rem(20);
+    }
+    p {
+      text-align: center;
+    }
   }
 }
