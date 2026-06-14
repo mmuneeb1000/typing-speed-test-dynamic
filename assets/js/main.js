@@ -30,7 +30,8 @@ let personalBest = 0;
 let currentCharIndex = 0;
 let totalCharacters = 0;
 let correctCharacters = 0;
-let incorrectCharacter = 0;
+let incorrectCount = 0;
+let totalTypedChars = 0;
 
 const referenceTextDiv = document.createElement("div");
 referenceTextDiv.className = "reference-text";
@@ -50,6 +51,7 @@ function loadPersonalBest() {
     personalBest = parseInt(saved);
     personalBestSpan.textContent = `Personal Best: ${personalBest}`;
   } else {
+    personalBest = 0;
     personalBestSpan.textContent = "Personal Best: 0";
   }
 }
@@ -59,6 +61,35 @@ function savePersonalBest(wpm) {
     personalBest = wpm;
     localStorage.setItem("typingPersonalBest", personalBest);
     personalBestSpan.textContent = `Personal Best: ${personalBest}`;
+    return true;
+  }
+  return false;
+}
+
+function isFirstVisit() {
+  const hasVisited = localStorage.getItem("hasVisitedBefore");
+  if (!hasVisited) {
+    localStorage.setItem("hasVisitedBefore", "true");
+    return true;
+  }
+  return false;
+}
+
+function updateResultMessages(finalWPM, isNewHighScore) {
+  const headingElement = document.querySelector(".dynamic-heading");
+  const textElement = document.querySelector(".dynamic-text");
+  const isFirstTime = isFirstVisit();
+
+  if (isFirstTime) {
+    headingElement.textContent = "🎉 First Test Complete! 🎉";
+    textElement.textContent =
+      "Great start! Keep practicing to improve your speed.";
+  } else if (isNewHighScore) {
+    headingElement.textContent = "🏆 New Personal Best! 🏆";
+    textElement.textContent = `Amazing! You've beaten your previous record (${personalBest} WPM). Keep up the momentum!`;
+  } else {
+    headingElement.textContent = "Test Completed!";
+    textElement.textContent = "Solid run. Keep pushing to beat your high score";
   }
 }
 
@@ -80,7 +111,6 @@ async function loadPassageData() {
   }
 }
 
-// Select random passage based on difficulty
 function selectRandomPassage() {
   if (!passageData || !passageData[currentDifficulty]) {
     return;
@@ -168,7 +198,11 @@ function calculateWPM() {
 
 function updateStats() {
   const wpm = calculateWPM();
-  const accuracy = calculateAccuracy();
+  const correctChars = totalTypedChars - incorrectCount;
+  const accuracy =
+    totalTypedChars === 0
+      ? 100
+      : Math.floor((correctChars / totalTypedChars) * 100);
 
   wpmElement.textContent = wpm;
   accuracyElement.textContent = `${accuracy}%`;
@@ -197,15 +231,17 @@ function finishTest() {
   const finalWPM = calculateWPM();
   const finalAccuracy = calculateAccuracy();
   const charsTyped = currentInput.length;
-  const charsWrong = currentInput.length;
+  const charsWrong = incorrectCount;
+  const isNewHighScore = savePersonalBest(finalWPM);
 
-  savePersonalBest(finalWPM);
+  updateResultMessages(finalWPM, isNewHighScore);
 
   const resultSpans = resultPage.querySelectorAll("span");
-  if (resultSpans.length >= 3) {
+  if (resultSpans.length >= 4) {
     resultSpans[0].textContent = `${finalWPM}`;
     resultSpans[1].textContent = `${finalAccuracy}%`;
-    resultSpans[2].textContent = `${charsTyped}/ ${charsWrong}`;
+    resultSpans[2].textContent = `${charsTyped}/`;
+    resultSpans[3].textContent = `${charsWrong}`;
   }
 
   passageContainer.style.display = "none";
@@ -233,22 +269,54 @@ function startTimedMode() {
 function handleUserInput(e) {
   if (!testActive || testCompleted) return;
 
-  currentInput = userInput.value;
+  const newInput = userInput.value;
+  const previousInput = currentInput;
+
+  if (newInput.length > previousInput.length) {
+    const newCharIndex = newInput.length - 1;
+    const newChar = newInput[newCharIndex];
+
+    if (newCharIndex < currentPassage.length) {
+      if (newChar !== currentPassage[newCharIndex]) {
+        incorrectCount++;
+      }
+    } else {
+      incorrectCount++;
+    }
+    totalTypedChars++;
+  } else if (newInput.length < previousInput.length) {
+    recalculateIncorrectCount(newInput);
+  }
+
+  currentInput = newInput;
   renderReferenceText();
   updateStats();
 
-  if (currentMode === "passage") {
-    const isComplete =
-      currentInput.length >= currentPassage.length &&
-      currentInput.slice(0, currentPassage.length) === currentPassage;
+  if (
+    (currentMode === "passage" || currentMode === "timed") &&
+    currentInput.length >= currentPassage.length
+  ) {
+    finishTest();
+    console.log("Passage Completed");
+  }
+}
 
-    if (isComplete) {
-      if (timer) clearInterval(timer);
-      testCompleted = true;
-      finishTest();
-      userInput.disabled = true;
+function recalculateIncorrectCount(input) {
+  let newIncorrectCount = 0;
+  const minLength = Math.min(input.length, currentPassage.length);
+
+  for (let i = 0; i < minLength; i++) {
+    if (input[i] !== currentPassage[i]) {
+      newIncorrectCount++;
     }
   }
+
+  if (input.length > currentPassage.length) {
+    newIncorrectCount += input.length - currentPassage.length;
+  }
+
+  incorrectCount = newIncorrectCount;
+  totalTypedChars = input.length;
 }
 
 function startTest() {
@@ -363,6 +431,13 @@ async function init() {
   });
   passageContainer.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON" && testActive && !testCompleted) {
+      userInput.focus();
+    }
+  });
+  referenceTextDiv.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+
+    if (testActive && !testCompleted) {
       userInput.focus();
     }
   });

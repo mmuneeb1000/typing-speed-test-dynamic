@@ -18,7 +18,14 @@
     bottom 100px right 40px;
   background-size: 20px, 40px;
 }
-
+.characters-display {
+  display: flex !important;
+  border: none !important;
+  flex-direction: row !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  justify-content: flex-start !important;
+}
 .result-cards {
   display: flex;
   div {

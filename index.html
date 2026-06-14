@@ -48,14 +48,18 @@
       </section>
       <section class="result-page">
         <img src="assets/images/icon-completed.svg" />
-        <h2>Test Completed!</h2>
-        <p>Solid run. Keep pushing to beat your high score</p>
+        <h2 class="dynamic-heading">Test Completed!</h2>
+        <p class="dynamic-text">
+          Solid run. Keep pushing to beat your high score
+        </p>
         <div class="result-cards">
           <div>WPM:<span class="words-per-minute"></span></div>
           <div>Accuracy:<span class="accuracy"></span></div>
           <div>
-            Characters:<span class="correct"></span
-            ><span class="uncorrect"></span>
+            Characters:
+            <div class="characters-display">
+              <span class="correct"></span><span class="incorrect-char"></span>
+            </div>
           </div>
         </div>
         <button class="result-btn">
