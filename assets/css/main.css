@@ -353,8 +353,15 @@ header {
 
 @media (max-width: 768px) {
   header {
+    display: block;
     width: 100%;
     padding: 0.75rem;
+    text-align: center;
+    margin-bottom: 0 !important;
+  }
+  .logo {
+    width: 70%;
+    margin: 1.5rem;
   }
 }
 .attribution {
@@ -362,10 +369,18 @@ header {
   text-align: center;
   position: fixed;
   bottom: 0.75rem;
+  background-color: hsl(0, 0%, 7%);
 }
 
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media (max-width: 768px) {
+  .attribution {
+    position: relative;
+    margin-top: 2.5rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

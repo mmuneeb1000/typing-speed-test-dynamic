@@ -4,7 +4,15 @@
   text-align: center;
   position: fixed;
   bottom: u.rem(12);
+  background-color: u.$grey-900;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media (max-width: 768px) {
+  .attribution {
+    position: relative;
+    margin-top: u.rem(40);
+  }
 }
