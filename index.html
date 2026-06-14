@@ -25,18 +25,55 @@
     <main>
       <section class="display-card">
         <div class="stats-card">
-          <div>WPM: <span class="words-per-minute"></span></div>
-          <div>Accuracy: <span class="accuracy"></span></div>
-          <div>Time: <span class="time"></span></div>
+          <div class="wpm-display">
+            WPM: <span class="words-per-minute"></span>
+          </div>
+          <div class="accuracy-display">
+            Accuracy: <span class="accuracy"></span>
+          </div>
+          <div class="time-display">Time: <span class="time"></span></div>
         </div>
         <div class="toggle-panel">
-          <span>Difficulty: </span>
-          <button class="toggle-easy">Easy</button>
-          <button class="toggle-medium">Medium</button>
-          <button class="toggle-hard">Hard</button>
-          <span>Mode: </span>
-          <button class="toggle-timed">Timed(60s)</button>
-          <button class="toggle-passage">Passage</button>
+          <div class="difficulty-selector">
+            <span>Difficulty: </span>
+            <div class="difficulty-buttons">
+              <button data-difficulty="easy" class="toggle-easy">Easy</button>
+              <button data-difficulty="medium" class="toggle-medium">
+                Medium
+              </button>
+              <button data-difficulty="hard" class="toggle-hard">Hard</button>
+            </div>
+
+            <select class="difficulty-select">
+              <option type="radio" value="easy" class="select-easy">
+                Easy
+              </option>
+              <option type="radio" value="medium" class="select-medium">
+                Medium
+              </option>
+              <option type="radio" value="hard" class="select-hard">
+                Hard
+              </option>
+            </select>
+          </div>
+
+          <div class="mode-selector">
+            <div class="mode-buttons">
+              <span>Mode: </span>
+              <button data-mode="timed" class="toggle-timed">Timed(60s)</button>
+              <button data-mode="passage" class="toggle-passage">
+                Passage
+              </button>
+            </div>
+            <select class="mode-select">
+              <option type="radio" value="timed" class="select-timed">
+                Timed(60s)
+              </option>
+              <option type="radio" value="passage" class="select-passage">
+                Passage
+              </option>
+            </select>
+          </div>
         </div>
       </section>
       <section class="passage-container">

@@ -14,6 +14,12 @@
 .accuracy {
   color: u.$red-500;
 }
+
+.accuracy-display {
+  border-right: 1px solid u.$grey-500;
+  border-left: 1px solid u.$grey-500;
+  padding: 0 u.rem(20);
+}
 .incorrect-char {
   color: u.$red-500;
 }
@@ -86,11 +92,12 @@
     padding: u.rem(12);
   }
   .stats-card {
-    display: block;
     margin-bottom: u.rem(20);
+    justify-content: center;
   }
   .toggle-panel {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
   .reference-text {
     font-size: u.rem(20);

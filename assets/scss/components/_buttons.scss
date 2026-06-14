@@ -65,3 +65,44 @@
 .again-icon {
   filter: invert(1);
 }
+
+.difficulty-select,
+.mode-select {
+  display: none;
+  width: 100%;
+  padding: u.rem(4);
+  background-color: u.$grey-900;
+  color: u.$white;
+  border: 1px solid u.$grey-500;
+  border-radius: u.rem(8);
+  text-align: center;
+  option {
+    background-color: u.$grey-800;
+    text-align: center;
+  }
+}
+
+.mode-selector,
+.difficulty-selector {
+  display: flex;
+  gap: u.rem(10);
+}
+
+.difficulty-selector {
+  border-right: u.rem(1) solid u.$grey-500;
+  padding-right: u.rem(12);
+}
+
+@media (max-width: 768px) {
+  .mode-buttons,
+  .difficulty-buttons {
+    display: none;
+  }
+  .difficulty-select,
+  .mode-select {
+    display: flex;
+  }
+  .difficulty-selector span {
+    display: none;
+  }
+}

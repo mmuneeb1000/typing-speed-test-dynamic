@@ -90,6 +90,47 @@ button {
   filter: invert(1);
 }
 
+.difficulty-select,
+.mode-select {
+  display: none;
+  width: 100%;
+  padding: 0.25rem;
+  background-color: hsl(0, 0%, 7%);
+  color: hsl(0, 0%, 100%);
+  border: 1px solid hsl(240, 3%, 46%);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.difficulty-select option,
+.mode-select option {
+  background-color: hsl(0, 0%, 15%);
+  text-align: center;
+}
+
+.mode-selector,
+.difficulty-selector {
+  display: flex;
+  gap: 0.625rem;
+}
+
+.difficulty-selector {
+  border-right: 0.0625rem solid hsl(240, 3%, 46%);
+  padding-right: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .mode-buttons,
+  .difficulty-buttons {
+    display: none;
+  }
+  .difficulty-select,
+  .mode-select {
+    display: flex;
+  }
+  .difficulty-selector span {
+    display: none;
+  }
+}
 .display-card {
   display: flex;
   width: 100%;
@@ -106,6 +147,12 @@ button {
 
 .accuracy {
   color: hsl(354, 63%, 57%);
+}
+
+.accuracy-display {
+  border-right: 1px solid hsl(240, 3%, 46%);
+  border-left: 1px solid hsl(240, 3%, 46%);
+  padding: 0 1.25rem;
 }
 
 .incorrect-char {
@@ -181,11 +228,12 @@ button {
     padding: 0.75rem;
   }
   .stats-card {
-    display: block;
     margin-bottom: 1.25rem;
+    justify-content: center;
   }
   .toggle-panel {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
   .reference-text {
     font-size: 1.25rem;
@@ -240,13 +288,6 @@ button {
   margin: 0;
   padding: 0;
   justify-content: flex-start;
-}
-
-.show-confetti {
-  background-image: url("../assets/images/pattern-confetti.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
 
 @media (max-width: 768px) {

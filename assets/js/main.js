@@ -16,6 +16,8 @@ const mediumBtn = document.querySelector(".toggle-medium");
 const hardBtn = document.querySelector(".toggle-hard");
 const timedBtn = document.querySelector(".toggle-timed");
 const passageBtn = document.querySelector(".toggle-passage");
+const difficultySelect = document.querySelector(".difficulty-select");
+const modeSelect = document.querySelector(".mode-select");
 
 let passageData = null;
 let currentDifficulty = "hard";
@@ -458,6 +460,13 @@ async function init() {
   hardBtn.addEventListener("click", () => setDifficulty("hard"));
   timedBtn.addEventListener("click", () => setMode("timed"));
   passageBtn.addEventListener("click", () => setMode("passage"));
+
+  difficultySelect.addEventListener("change", (e) => {
+    setDifficulty(e.target.value);
+  });
+  modeSelect.addEventListener("change", (e) => {
+    setMode(e.target.value);
+  });
 
   hardBtn.classList.add("active");
   timedBtn.classList.add("active");

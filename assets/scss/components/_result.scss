@@ -55,12 +55,6 @@
     justify-content: flex-start;
   }
 }
-.show-confetti {
-  background-image: url("../assets/images/pattern-confetti.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
 
 @media (max-width: 768px) {
   .result-page {
