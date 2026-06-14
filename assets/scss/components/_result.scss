@@ -14,17 +14,19 @@
     url("/assets/images/pattern-star-1.svg");
   background-repeat: no-repeat, no-repeat;
   background-position:
-    top 100px left 20px,
-    bottom 100px right 40px;
+    top u.rem(100) left u.rem(24),
+    bottom u.rem(100) right u.rem(42);
   background-size: 20px, 40px;
 }
-.characters-display {
-  display: flex !important;
-  border: none !important;
-  flex-direction: row !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  justify-content: flex-start !important;
+.success-icon {
+  width: 50px;
+  margin-bottom: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 15px rgba(114, 229, 143, 0.15),
+    0 0 0 30px rgba(114, 229, 143, 0.08);
 }
 .result-cards {
   display: flex;
@@ -44,6 +46,20 @@
       font-weight: u.$font-semibold;
     }
   }
+  .characters-display {
+    display: flex;
+    border: none;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start;
+  }
+}
+.show-confetti {
+  background-image: url("../assets/images/pattern-confetti.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 @media (max-width: 768px) {

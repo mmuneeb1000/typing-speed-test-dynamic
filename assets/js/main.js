@@ -1,3 +1,4 @@
+const container = document.querySelector(".container");
 const wpmElement = document.querySelector(".words-per-minute");
 const accuracyElement = document.querySelector(".accuracy");
 const timeElement = document.querySelector(".time");
@@ -81,12 +82,12 @@ function updateResultMessages(finalWPM, isNewHighScore) {
   const isFirstTime = isFirstVisit();
 
   if (isFirstTime) {
-    headingElement.textContent = "🎉 First Test Complete! 🎉";
+    headingElement.textContent = "Baseline Establised!";
     textElement.textContent =
-      "Great start! Keep practicing to improve your speed.";
+      "You've set the bar. Now the real challenge begins! Time to beat it.";
   } else if (isNewHighScore) {
-    headingElement.textContent = "🏆 New Personal Best! 🏆";
-    textElement.textContent = `Amazing! You've beaten your previous record (${personalBest} WPM). Keep up the momentum!`;
+    headingElement.textContent = "Highscore Smashed";
+    textElement.textContent = `You are getting faster. That was incredible typing.`;
   } else {
     headingElement.textContent = "Test Completed!";
     textElement.textContent = "Solid run. Keep pushing to beat your high score";
@@ -249,6 +250,15 @@ function finishTest() {
   restartBtn.style.display = "none";
   displayCard.style.display = "none";
   resultPage.style.display = "flex";
+
+  if (isNewHighScore && !isFirstVisit()) {
+    container.style.backgroundImage =
+      "url('assets/images/pattern-confetti.svg')";
+
+    setTimeout(() => {
+      container.style.backgroundImage = "none";
+    }, 3000);
+  }
 }
 
 function startTimedMode() {

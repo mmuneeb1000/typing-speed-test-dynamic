@@ -2,6 +2,8 @@
 .attribution {
   font-size: u.rem(12);
   text-align: center;
+  position: fixed;
+  bottom: u.rem(12);
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
