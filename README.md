@@ -1,8 +1,8 @@
-# ⌨️ Typing Speed Test
+# Typing Speed Test
 
 A modern, interactive typing speed test application that measures your Words Per Minute (WPM), accuracy, and tracks your progress over time.
 
-## ✨ Features
+## Features
 
 - **Multiple Difficulty Levels** - Easy, Medium, and Hard passages
 - **Two Game Modes** - Timed (60 seconds) or Passage completion
@@ -13,11 +13,11 @@ A modern, interactive typing speed test application that measures your Words Per
 - **Mistake Counter** - Tracks total incorrect inputs
 - **Responsive Design** - Works on desktop and mobile devices
 
-## 🚀 Live Demo
+## Live Demo
 
-[DEMO LINK](https://candid-biscochitos-9ae432.netlify.app/)
+LIVE LINK: (https://candid-biscochitos-9ae432.netlify.app/)
 
-## 📋 How to Use
+## How to Use
 
 1. **Select Difficulty** - Choose Easy, Medium, or Hard
 2. **Choose Mode** - Timed (60s) or Passage (complete the text)
@@ -26,7 +26,7 @@ A modern, interactive typing speed test application that measures your Words Per
 5. **View Results** - See your WPM, Accuracy, and total mistakes
 6. **Track Progress** - Personal best is saved automatically
 
-## 🎮 Game Modes
+## Game Modes
 
 ### Timed Mode (60s)
 
@@ -40,26 +40,34 @@ A modern, interactive typing speed test application that measures your Words Per
 - No time limit
 - Test ends when all characters match
 
-## 📊 Statistics Tracked
+## Statistics Tracked
 
 - **WPM** - Words Per Minute (5 characters = 1 word)
 - **Accuracy** - Percentage of correctly typed characters
 - **Characters** - Total characters typed
 - **Incorrect Inputs** - Count of typing errors
 
-## 💾 Data Storage
+## Data Storage
 
 - Personal best saved in browser's localStorage
 - First visit status tracked
 - No external databases or servers required
 
-## 🎨 Color Coding
+## Color Coding
 
 - 🟢 **Green** - Correctly typed characters
 - 🔴 **Red** - Incorrect characters
 - 🟡 **Yellow** - Current typing position
 
-## 🧪 Testing
+## Tech Stack
+
+- HTML5
+- CSS3
+- SCSS
+- JavaScript
+- Local Storage API
+
+## Testing
 
 To test the application:
 
@@ -72,14 +80,14 @@ To test the application:
    localStorage.getItem("hasVisitedBefore");
    ```
 
-## 🔧 Browser Support
+## Browser Support
 
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
 
-## 📝 Future Improvements
+## Future Improvements
 
 - [ ] Add sound effects for typing
 - [ ] Leaderboard system
@@ -88,11 +96,11 @@ To test the application:
 - [ ] Daily challenges
 - [ ] Typing history graph
 
-## 📄 License
+## License
 
 This project is free to use for personal and educational purposes.
 
-## 👨‍💻 Author
+## Author
 
 **M.Muneeb**
 
